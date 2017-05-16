@@ -2,10 +2,21 @@
 #include <string.h>
 #include "lib.h"
 
+int proverka(char *string, char *search, int position, int sizeSearch)
+{
+     for(int i = 0; i < sizeSearch; i++){
+         if (string[i + position] != search[i])
+              return 1;
+     }
+     return 0;
 
-int main(){
+}
+
+
+int main()
+{
 FILE *f, *f2;
-char search[] = "lo";
+char search[] = "dear";
 char string[] = "Hello my dear friend, I'm love you, my love";
 char *str[10];
 int b[10][5];
@@ -28,8 +39,10 @@ int sizeSearch = sizeof(search) / sizeof(char) - 1;
     hsub = hash_kp(search, 2);
     for (i = 0, j = 0; i < (sizeString - sizeSearch); i++){
         if (hash_kp(&string[i], 2) == hsub){
-            position[j] = i;
-            j++;
+            if (proverka(string, search, i, sizeSearch) == 0){
+                position[j] = i;
+                j++;
+            }
         }
     }
 

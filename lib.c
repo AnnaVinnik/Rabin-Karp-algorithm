@@ -34,20 +34,17 @@ int i;
     for (i = 0; i < position[0]; i++){
         printf("%c", string[i]);
     }
-    for (int j = 0; j < 1; j++){
-        printf("%s%sm",CSI,colors[9]);
-        for (i = position[j]; i < (position[j] + sizeSearch); i++){
-            printf("%c", string[i]);
-        }
-        printf("%s0m",CSI);
-        for (i = position[j]; i < position[j + 1]; i++){
-            printf("%c", string[i]);
-        }
-    }
-
-    for (i = (position[1] + sizeSearch); i < sizeString; i++){
+    printf("%s%sm",CSI,colors[9]);
+    for (i = position[0]; i < (position[0] + sizeSearch); i++){
         printf("%c", string[i]);
     }
+    printf("%s0m",CSI);
+    for (i = position[0] + sizeSearch; i < sizeString; i++){
+        printf("%c", string[i]);
+    }
+
     printf("\n");
     
 }
+
+
