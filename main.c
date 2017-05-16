@@ -16,7 +16,7 @@ int proverka(char *string, char *search, int position, int sizeSearch)
 int main()
 {
 FILE *f, *f2;
-char search[] = "dear";
+char search[] = "lo";
 char string[] = "Hello my dear friend, I'm love you, my love";
 char *str[10];
 int b[10][5];
@@ -46,7 +46,7 @@ int sizeSearch = sizeof(search) / sizeof(char) - 1;
         }
     }
 
-    print(string, position, sizeSearch, sizeString);
+    print(string, position, sizeSearch, sizeString, search);
 
     return 0;
 

@@ -19,7 +19,7 @@ int j;
 }
 
 
-void print(char *string, int *position, int sizeSearch, int sizeString)
+void printSearch(char *search)
 {
 char colors[][5] = {
  "0;30", /* Black */ "1;30", /* Dark Gray */
@@ -29,20 +29,29 @@ char colors[][5] = {
  "0;34", /* Blue */ "1;34", /* Bold Blue */
  "0;35", /* Purple */ "1;35", /* Bold Purple */
  "0;36", /* Cyan */ "1;36" /*Bold Cyan */ };
-int i;	
-
-    for (i = 0; i < position[0]; i++){
-        printf("%c", string[i]);
-    }
+int i;
     printf("%s%sm",CSI,colors[9]);
-    for (i = position[0]; i < (position[0] + sizeSearch); i++){
-        printf("%c", string[i]);
-    }
+    printf("%s", search);
     printf("%s0m",CSI);
-    for (i = position[0] + sizeSearch; i < sizeString; i++){
-        printf("%c", string[i]);
-    }
+}
 
+void print(char *string, int *position, int sizeSearch, int sizeString, char *search)
+{
+
+int i, j = 0;	
+
+    for (i = 0; i < position[0]; i++)
+        printf("%c", string[i]);
+        printSearch(search);
+
+    for (j = 1; j < 3; j++){
+        for (i = position[j - 1] + sizeSearch; i < position[j]; i++){
+            printf("%c", string[i]);
+        }
+        printSearch(search);
+    }
+    for (i = position[2] + sizeSearch; i < sizeString; i++)
+        printf("%c", string[i]);
     printf("\n");
     
 }
