@@ -6,11 +6,11 @@
 int main(){
 FILE *f, *f2;
 char search[] = "lo";
-char string[] = "Hello my dear frend, I'm love you";
+char string[] = "Hello my dear friend, I'm love you, my love";
 char *str[10];
 int b[10][5];
 int hs, hsub;
-int i = 0, position = 0, j = 1;
+int i = 0, position[10] = {}, j = 1;
 
      
      for (i = 0; i < 20; i++){
@@ -26,9 +26,11 @@ int sizeSearch = sizeof(search) / sizeof(char) - 1;
 
 
     hsub = hash_kp(search, 2);
-    for (i = 0; i < (sizeString - sizeSearch); i++){
-        if (hash_kp(&string[i], 2) == hsub)
-        position = i;
+    for (i = 0, j = 0; i < (sizeString - sizeSearch); i++){
+        if (hash_kp(&string[i], 2) == hsub){
+            position[j] = i;
+            j++;
+        }
     }
 
     print(string, position, sizeSearch, sizeString);
